@@ -25,12 +25,34 @@ public class Burger {
     }};
     private String toppings1;
     private String toppings2;
-    private static double plainBurgerPrice = 4.99;
+    private final static double PLAIN_BURGER_PRICE = 4.99;
+    protected static final Burger plain = new Burger();
 
     public Burger(String breadRollType, String meat) {
         this.breadRollType = breadRollType;
         this.meat = meat;
         printInitBurgerMsg();
+    }
+
+    public Burger() {
+        this.breadRollType = null;
+        this.meat = null;
+    }
+
+    public String getBreadRollType() {
+        return breadRollType;
+    }
+
+    public void setBreadRollType(String breadRollType) {
+        this.breadRollType = breadRollType;
+    }
+
+    public String getMeat() {
+        return meat;
+    }
+
+    public void setMeat(String meat) {
+        this.meat = meat;
     }
 
     public String getToppings1() {
@@ -42,11 +64,11 @@ public class Burger {
     }
 
     private void printInitBurgerMsg() {
-        System.out.println("Created burger on a " + this.breadRollType + " roll with " + this.meat + ", price is $" + plainBurgerPrice);
+        System.out.println("Created burger on a " + this.breadRollType + " roll with " + this.meat + ", price is $" + PLAIN_BURGER_PRICE);
     }
 
     public double getPlainBurgerPrice() {
-        return plainBurgerPrice;
+        return PLAIN_BURGER_PRICE;
     }
 
     public void addToppings1(String topping) {
@@ -87,8 +109,8 @@ public class Burger {
         System.out.println("Error! Do not have topping " + topping);
     }
 
-    public void totalBurgerPrice() {
-        double totalBurgerPrice = Burger.plainBurgerPrice;
+    public double totalBurgerPrice() {
+        double totalBurgerPrice = Burger.PLAIN_BURGER_PRICE;
 
         if (this.toppings1 != null) {
             totalBurgerPrice += getToppingPrice(this.toppings1);
@@ -99,6 +121,6 @@ public class Burger {
         }
 
         System.out.printf("Total Burger price is $%.2f\n", totalBurgerPrice);
-
+        return totalBurgerPrice;
     }
 }

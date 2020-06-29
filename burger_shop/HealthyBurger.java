@@ -9,6 +9,10 @@ public class HealthyBurger extends Burger {
         super(breadRollType, meat);
     }
 
+    public HealthyBurger() {
+        super(Bread.WHEAT, Meat.BLACK_BEAN);
+    }
+
     private boolean isValidHealthyTopping(String topping) {
         for (String disAllowedTopping : disAllowedToppings) {
             if (topping.equals(disAllowedTopping)) {
@@ -43,7 +47,7 @@ public class HealthyBurger extends Burger {
     }
 
     @Override
-    public void totalBurgerPrice() {
+    public double totalBurgerPrice() {
         double totalHealthyBurgerPrice = super.getPlainBurgerPrice();
 
         if (super.getToppings1() != null) {
@@ -63,5 +67,6 @@ public class HealthyBurger extends Burger {
         }
 
         System.out.printf("Total Healthy Burger price is $%.2f\n", totalHealthyBurgerPrice);
+        return totalHealthyBurgerPrice;
     }
 }
