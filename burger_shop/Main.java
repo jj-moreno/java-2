@@ -35,5 +35,9 @@ public class Main {
         Order order2 = new Order(Meal.Combo.healthy);
         order2.addDrink(Meal.Drink.dietCoke);
         order2.purchaseOrder();
+
+        Order order3 = new Order();
+        order3.addBurger(new DeluxeBurger(Bread.RYE, Meat.STEAK));
+        order3.purchaseOrder();
     }
 }

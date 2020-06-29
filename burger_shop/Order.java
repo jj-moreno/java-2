@@ -11,6 +11,7 @@ public class Order {
     public Order() {
         this.meal = new Meal(null, null, null);
     }
+
     public Order(Meal meal) {
         this.meal = meal;
     }
@@ -113,8 +114,11 @@ public class Order {
         double totalOrderPrice = burger.totalBurgerPrice();
 
         Meal.Drink drink = this.meal.getDrink();
-        totalOrderPrice += drink.getPrice();
-        System.out.printf("Added drink %s for $%.2f\n", drink.name(), drink.getPrice());
+        if (drink != null) {
+            totalOrderPrice += drink.getPrice();
+            System.out.printf("Added drink %s for $%.2f\n", drink.name(), drink.getPrice());
+        }
+
         for (String side : this.meal.getSides()) {
             totalOrderPrice += Side.PRICE;
             System.out.printf("Added side item %s for $%.2f\n", side, Side.PRICE);
