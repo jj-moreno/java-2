@@ -17,14 +17,18 @@ public class DeluxeBurger extends Burger {
 
     @Override
     public void addToppings1(String topping) {
-        super.addToppings1(topping);
-        this.deluxeToppingsList.add(topping);
+        if (Burger.isValidToppingOffering(topping)) {
+            super.addToppings1(topping);
+            this.deluxeToppingsList.add(topping);
+        }
     }
 
     @Override
     public void addToppings2(String topping) {
-        super.addToppings2(topping);
-        this.deluxeToppingsList.add(topping);
+        if (Burger.isValidToppingOffering(topping)) {
+            super.addToppings2(topping);
+            this.deluxeToppingsList.add(topping);
+        }
     }
 
     public void addTopping(String topping) {

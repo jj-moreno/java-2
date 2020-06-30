@@ -15,13 +15,13 @@ public class Burger {
         put("onions", 0.22);
         put("mustard", 0.00);
         put("ketchup", 0.00);
-        put("mayonaise", 0.00);
+        put("mayonnaise", 0.00);
         put("relish", 0.11);
         put("guacamole", 1.29);
         put("mushrooms", 0.85);
         put("cheese", 1.06);
         put("bacon", 1.78);
-        put("pepperoni", 1.03);
+        put("pickles", 1.03);
     }};
     private String toppings1;
     private String toppings2;
@@ -29,30 +29,23 @@ public class Burger {
     protected static final Burger plain = new Burger();
 
     public Burger(String breadRollType, String meat) {
-        this.breadRollType = breadRollType;
-        this.meat = meat;
-        printInitBurgerMsg();
+
+        if (Bread.getBreadOptions().contains(breadRollType)) {
+            this.breadRollType = breadRollType;
+            if (Meat.getMeatOptions().contains(meat)) {
+                this.meat = meat;
+                printInitBurgerMsg();
+            } else {
+                System.out.printf("Error! Meat %s not an available meat option.\n", meat);
+            }
+        } else {
+            System.out.printf("Error! Bread %s not an available bread option.\n", breadRollType);
+        }
     }
 
     public Burger() {
         this.breadRollType = null;
         this.meat = null;
-    }
-
-    public String getBreadRollType() {
-        return breadRollType;
-    }
-
-    public void setBreadRollType(String breadRollType) {
-        this.breadRollType = breadRollType;
-    }
-
-    public String getMeat() {
-        return meat;
-    }
-
-    public void setMeat(String meat) {
-        this.meat = meat;
     }
 
     public String getToppings1() {
@@ -96,7 +89,7 @@ public class Burger {
     }
 
     protected static void printAddToppingMsg(String topping) {
-        System.out.println("Added " + topping + " for an extra $" + getToppingPrice(topping));
+        System.out.printf("Added %s for an extra $%.2f\n", topping, getToppingPrice(topping));
     }
 
     protected static double getToppingPrice(String topping) {

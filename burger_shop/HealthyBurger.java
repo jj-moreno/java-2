@@ -26,11 +26,37 @@ public class HealthyBurger extends Burger {
         System.out.println("Error! Topping " + topping + " not available for this burger");
     }
 
+    @Override
+    public void addToppings1(String topping) {
+        topping = topping.toLowerCase();
+        if (isValidHealthyTopping(topping)) {
+            if (Burger.isValidToppingOffering(topping)) {
+                super.addToppings1(topping);
+            }
+        } else {
+            this.printAddHealthyToppingError(topping);
+        }
+    }
+
+    @Override
+    public void addToppings2(String topping) {
+        topping = topping.toLowerCase();
+        if (isValidHealthyTopping(topping)) {
+            if (Burger.isValidToppingOffering(topping)) {
+                super.addToppings2(topping);
+            }
+        } else {
+            this.printAddHealthyToppingError(topping);
+        }
+    }
+
     public void addToppings3(String topping) {
         topping = topping.toLowerCase();
         if (isValidHealthyTopping(topping)) {
-            this.toppings3 = topping;
-            Burger.printAddToppingMsg(this.toppings3);
+            if (Burger.isValidToppingOffering(topping)) {
+                this.toppings3 = topping;
+                Burger.printAddToppingMsg(this.toppings3);
+            }
         } else {
             this.printAddHealthyToppingError(topping);
         }
@@ -39,8 +65,10 @@ public class HealthyBurger extends Burger {
     public void addToppings4(String topping) {
         topping = topping.toLowerCase();
         if (isValidHealthyTopping(topping)) {
-            this.toppings4 = topping;
-            Burger.printAddToppingMsg(this.toppings4);
+            if (Burger.isValidToppingOffering(topping)) {
+                this.toppings4 = topping;
+                Burger.printAddToppingMsg(this.toppings4);
+            }
         } else {
             this.printAddHealthyToppingError(topping);
         }

@@ -1,25 +1,19 @@
 package burger_shop;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Meal {
     private Burger burger;
     private Drink drink;
-    private List<String> sides;
+    private String[] sides = new String[3];
 
 
-    public Meal() {
+    private Meal() {
         this.burger = Burger.plain;
     }
 
-    public Meal(Burger burger, Drink drink, String side) {
+    private Meal(Burger burger, Drink drink, String side) {
         this.burger = burger;
         this.drink = drink;
-        this.sides = new ArrayList<>();
-        if (side != null) {
-            sides.add(side);
-        }
+        sides[0] = side;
     }
 
     public Burger getBurger() {
@@ -38,11 +32,11 @@ public class Meal {
         this.drink = drink;
     }
 
-    public List<String> getSides() {
+    public String[] getSides() {
         return sides;
     }
 
-    public void setSides(List<String> sides) {
+    public void setSides(String[] sides) {
         this.sides = sides;
     }
 
